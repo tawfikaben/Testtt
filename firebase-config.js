@@ -2,12 +2,10 @@
 const firebaseConfig = {
     apiKey: "AIzaSyDpSF4J0bsd6T0ImMpse0KQQRADaxiYUQw",
     authDomain: "darhassna-484c3.firebaseapp.com",
-    databaseURL: "https://darhassna-484c3-default-rtdb.europe-west1.firebasedatabase.app",
     projectId: "darhassna-484c3",
-    storageBucket: "darhassna-484c3.firebasestorage.app",
+    storageBucket: "darhassna-484c3.appspot.com",
     messagingSenderId: "141393162149",
-    appId: "1:141393162149:web:0717227eac221f5ddfc24c",
-    measurementId: "G-4ESKD24KX7"
+    appId: "1:141393162149:web:0717227eac221f5ddfc24c"
 };
 
 // Initialize Firebase
@@ -22,7 +20,7 @@ async function login(email, password) {
         return userCredential.user;
     } catch (error) {
         console.error("خطأ في تسجيل الدخول:", error);
-        throw error;
+        throw new Error("فشل تسجيل الدخول: " + error.message);
     }
 }
 
@@ -31,5 +29,5 @@ function logout() {
     return auth.signOut();
 }
 
-// تصدير الدوال والكائنات الضرورية
-export { db, auth, login, logout };
+// جعل المتغيرات متاحة عالمياً
+window.firebase = { db, auth, login, logout };
