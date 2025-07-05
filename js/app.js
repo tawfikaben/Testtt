@@ -98,4 +98,52 @@ async function saveMenu() {
     } finally {
         // إعادة تعيين زر الحفظ
         document.getElementById('save-spinner').classList.add('hidden');
-        document.getElementById(currentLanguage === 'fr' ? 'save-text' : 'save-text-ar
+        document.getElementById(currentLanguage === 'fr' ? 'save-text' : 'save-text-ar').classList.remove('hidden');
+        document.getElementById('save-menu').disabled = false;
+    }
+}
+
+// باقي الدوال (loadMenu, updateOrderSummary, etc...) بنفس الشكل السابق
+// مع التأكد من استخدام async/await لجميع عمليات Firebase
+
+// إعداد مستمعي الأحداث
+function setupEventListeners() {
+    // تسجيل الدخول
+    document.getElementById('login-btn').addEventListener('click', async () => {
+        const email = document.getElementById('login-email').value;
+        const password = document.getElementById('login-password').value;
+        
+        try {
+            await auth.signInWithEmailAndPassword(email, password);
+        } catch (error) {
+            document.getElementById('login-error').textContent = error.message;
+            document.getElementById('login-error').classList.remove('hidden');
+        }
+    });
+
+    // زر الحفظ
+    document.getElementById('save-menu').addEventListener('click', async () => {
+        const success = await saveMenu();
+        showAlert(
+            success ? (currentLanguage === 'fr' ? 'Menu sauvegardé!' : 'تم الحفظ بنجاح!') 
+                   : (currentLanguage === 'fr' ? 'Erreur de sauvegarde' : 'خطأ في الحفظ'),
+            success ? 'success' : 'error'
+        );
+    });
+
+    // باقي المستمعين للأحداث...
+}
+
+// دالة لعرض التنبيهات
+function showAlert(message, type) {
+    const alertDiv = document.createElement('div');
+    alertDiv.className = `fixed top-4 right-4 p-4 rounded-md shadow-lg ${
+        type === 'success' ? 'bg-green-500' : 'bg-red-500'
+    } text-white`;
+    alertDiv.textContent = message;
+    document.body.appendChild(alertDiv);
+    
+    setTimeout(() => {
+        alertDiv.remove();
+    }, 3000);
+}
