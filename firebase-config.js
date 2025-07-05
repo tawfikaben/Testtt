@@ -13,21 +13,5 @@ const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 const auth = firebase.auth();
 
-// دالة تسجيل الدخول
-async function login(email, password) {
-    try {
-        const userCredential = await auth.signInWithEmailAndPassword(email, password);
-        return userCredential.user;
-    } catch (error) {
-        console.error("خطأ في تسجيل الدخول:", error);
-        throw new Error("فشل تسجيل الدخول: " + error.message);
-    }
-}
-
-// دالة تسجيل الخروج
-function logout() {
-    return auth.signOut();
-}
-
 // جعل المتغيرات متاحة عالمياً
-window.firebase = { db, auth, login, logout };
+window.firebaseApp = { db, auth };
