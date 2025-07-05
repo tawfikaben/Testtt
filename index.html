@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دار حسنة - نظام الطلبات</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <!-- مكتبات Firebase -->
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
@@ -12,10 +12,11 @@
 </head>
 <body>
     <div id="app-container">
-        <!-- سيتم تحميل المحتوى هنا ديناميكياً -->
+        <h1>جار تحميل النظام...</h1>
     </div>
 
-    <script src="js/firebase-config.js"></script>
-    <script src="js/app.js"></script>
+    <!-- تم تغيير type إلى module -->
+    <script type="module" src="/js/firebase-config.js"></script>
+    <script type="module" src="/js/app.js"></script>
 </body>
 </html>
