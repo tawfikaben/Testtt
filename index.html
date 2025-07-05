@@ -1,65 +1,21 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAR HASSNA - Système de Commande</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>دار حسنة - نظام الطلبات</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- مكتبات Firebase -->
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-auth-compat.js"></script>
-    <style>
-        /* أنماط CSS السابقة تبقى كما هي */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f8f8;
-        }
-        /* ... (بقية الأنماط كما في الكود السابق) ... */
-    </style>
 </head>
 <body>
-    <!-- شاشة تسجيل الدخول -->
-    <div id="login-view" class="min-h-screen flex items-center justify-center bg-gray-100">
-        <div class="login-container">
-            <h2 class="text-2xl font-bold text-center mb-6 text-[#5a4a42]">Connexion Admin</h2>
-            <div class="mb-4">
-                <label class="block text-gray-700 mb-2">Email</label>
-                <input type="email" id="login-email" class="w-full p-2 border rounded">
-            </div>
-            <div class="mb-6">
-                <label class="block text-gray-700 mb-2">Mot de passe</label>
-                <input type="password" id="login-password" class="w-full p-2 border rounded">
-            </div>
-            <button id="login-btn" class="w-full bg-[#5a4a42] text-white py-2 rounded hover:bg-[#3a2a22]">
-                Se connecter
-            </button>
-            <p id="login-error" class="text-red-500 mt-3 text-center hidden"></p>
-        </div>
+    <div id="app-container">
+        <!-- سيتم تحميل المحتوى هنا ديناميكياً -->
     </div>
 
-    <!-- تطبيق الطلبات (مخفى في البداية) -->
-    <div id="app" class="min-h-screen hidden">
-        <!-- بقية واجهة المستخدم كما في الكود السابق -->
-    </div>
-
-    <script>
-        // الخطوة 6: تهيئة Firebase
-        const firebaseConfig = {
-            apiKey: "AIzaSyYOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "YOUR_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
-
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-        const db = firebase.firestore();
-        const auth = firebase.auth();
-
-        // بقية الكود كما في الإصدار السابق
-    </script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>
